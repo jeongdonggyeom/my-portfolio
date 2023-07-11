@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
 import { ReactNode } from "react";
 import GlobalStyle from "../styles/GlobalStyle";
+import { styled } from "styled-components";
 
-export default function Layout({children}: {children: ReactNode}) {
-  return(
+export default function Layout({ children }: { children: ReactNode }) {
+  return (
     <>
       <GlobalStyle />
-      <main>
-        {children}
-      </main>
+      <MainContainer>{children}</MainContainer>
     </>
-  )
-};
+  );
+}
+
+const MainContainer = styled.main`
+  background-color: black;
+  width: 100%;
+  height: 100%;
+`;

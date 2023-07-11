@@ -1,14 +1,14 @@
 "use client";
 
 import { useLottie } from "lottie-react";
-import { GitHubIcon, LogoLottie } from "../../public";
+import { GitHubIcon, LogoLottie, RainbowIcon } from "../../public";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Header() {
-  const router = useRouter();
+  const [clickBack, setClickBack] = useState(false);
 
   const lottieStyle = {
     width: 140,
@@ -26,21 +26,34 @@ export default function Header() {
 
   return (
     <HeaderWrap>
-      <Image src={"/video/bg_1.webp"} alt="background-video" fill />
-      <LottieContainer onMouseEnter={() => play()} onMouseLeave={() => stop()}>
+      <ImageContainer>
+      {clickBack ? (
+        <Image src={"/icon/rainbowPattern.png"} alt="background-image" fill />
+      ) : (
+        <Image src={"/video/bg_1.webp"} alt="background-video" fill />
+      )}
+      </ImageContainer>
+      <LottieContainer
+        onClick={() => setClickBack((prev: boolean) => !prev)}
+        onMouseEnter={() => play()}
+        onMouseLeave={() => stop()}
+      >
         {View}
       </LottieContainer>
       <HeaderWhiteContainer>
-        <LinkWrap>
+        <LinkContainer>
           <LinkStyle href="/">Home</LinkStyle>
           <LinkStyle href="/">Project</LinkStyle>
           <LinkStyle href="/">Info</LinkStyle>
           <LinkStyle href="/">Contact</LinkStyle>
-        </LinkWrap>
+        </LinkContainer>
         <SvgWrap href="https://github.com/jeongdonggyeom">
           <GitHubIcon />
         </SvgWrap>
       </HeaderWhiteContainer>
+      <BackgroundRainbow>
+        <RainbowIcon />
+      </BackgroundRainbow>
     </HeaderWrap>
   );
 }
@@ -79,7 +92,7 @@ const HeaderWhiteContainer = styled.div`
   border-top-left-radius: 30px;
 `;
 
-const LinkWrap = styled.div`
+const LinkContainer = styled.div`
   position: absolute;
   bottom: 10px;
 `;
@@ -98,3 +111,17 @@ const SvgWrap = styled(Link)`
   bottom: 10px;
   right: 20px;
 `;
+
+const BackgroundRainbow = styled.div`
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  z-index: 2;
+`;
+
+const ImageContainer = styled.div`
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  position: relative;
+`
