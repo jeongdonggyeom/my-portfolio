@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -19,6 +19,22 @@ const GlobalStyle = createGlobalStyle`
   li, ul {
     list-style: none;
   }
+
+  body{
+    overflow: hidden;
+  }
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  height: 65vh;
+  background-color: white;
+`;
+
+export const Title = styled.h1`
+  padding-top: 40px;
+  margin-left: 100px;
+  font-size: 40px;
 `;
 
 export default GlobalStyle;

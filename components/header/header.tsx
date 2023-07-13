@@ -27,11 +27,11 @@ export default function Header() {
   return (
     <HeaderWrap>
       <ImageContainer>
-      {clickBack ? (
-        <Image src={"/icon/rainbowPattern.png"} alt="background-image" fill />
-      ) : (
-        <Image src={"/video/bg_1.webp"} alt="background-video" fill />
-      )}
+        {clickBack ? (
+          <Image src={"/icon/rainbowPattern.webp"} alt="background-image" fill />
+        ) : (
+          <Image src={"/video/bg_1.webp"} alt="background-video" fill />
+        )}
       </ImageContainer>
       <LottieContainer
         onClick={() => setClickBack((prev: boolean) => !prev)}
@@ -42,7 +42,6 @@ export default function Header() {
       </LottieContainer>
       <HeaderWhiteContainer>
         <LinkContainer>
-          <LinkStyle href="/">Home</LinkStyle>
           <LinkStyle href="/">Project</LinkStyle>
           <LinkStyle href="/">Info</LinkStyle>
           <LinkStyle href="/">Contact</LinkStyle>
@@ -124,4 +123,4 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-`
+`;
